@@ -3,8 +3,8 @@ package com.intellispace.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+//import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
 public class Employee implements Serializable{
 
@@ -27,7 +27,7 @@ public class Employee implements Serializable{
 		this.name = name;
 	}
 	
-	@JsonSerialize(using=DateSerializer.class)
+//	@JsonSerialize(using=DateSerializer.class)
 	public Date getCreatedDate() {
 		return createdDate;
 	}
