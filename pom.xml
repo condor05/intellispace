@@ -15,17 +15,13 @@
 		<jackson.databind-version>2.2.3</jackson.databind-version>
 	</properties>
 	<dependencies>
+        <!-- mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>1.0.1</version>
         </dependency>
-		<!-- Jackson -->
-		<!--<dependency>-->
-			<!--<groupId>com.fasterxml.jackson.core</groupId>-->
-			<!--<artifactId>jackson-databind</artifactId>-->
-			<!--<version>${jackson.databind-version}</version>-->
-		<!--</dependency>-->
+
 		<!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
