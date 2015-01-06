@@ -1,0 +1,176 @@
+API Key
+
+URL: /v1.0/user/apikey?username=<username>&pass=<pass>
+    Return Value:
+    {
+    "apikey":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+
+    curl --request GET --header "U-ApiKey: YOUR_API_KEY_HERE" <URL>
+
+
+
+
+    Devices:
+    1. Create Device
+    URL:
+    http://{ip:port}/v1.0/devices
+
+    Method: POST
+
+    {
+    "name":"d1",
+    "desc":"arduino in the living room",
+    "type":"xxx",
+    "location":"Shanghai"
+    "latitude":0.444,
+    "longitude":0.555
+    }
+
+    Return: {"device_id": "067e6162-3b6f-4ae2-a171-2470b63dff00"}
+    2. Update Device:
+    URL: http://{ip:port}/v1.0/device/<device_id>
+    Method: PUT
+    {
+    "name":"d1",
+
+    "desc":"arduino in the living room",
+
+    "location":"Shanghai"
+
+    "latitude":0.444,
+    "longitude":0.555
+    }
+
+    Return Value: HTTP Headers Only
+
+
+    3. Get Device:
+    URL: http://{ip:port}/v1.0/device/<device_id>
+    Method: GET
+    {
+
+    "name":"d1",
+
+    "desc":"arduino in the living room",
+
+    "location":"Shanghai"
+
+    "latitude":0.444,
+    "longitude":0.555
+    }
+    CURL Test: curl --request GET --header "U-ApiKey: YOUR_API_KEY_HERE" http://{ip:port}/v1.0/device/12
+
+
+
+    4. List Devices
+    URL: http://{ip:port}/v1.0/devices
+    Method: GET
+    Return Value:
+    {
+    "id": "2",
+    "name":"d1",
+    "desc":"arduino in the living room",
+
+    "location":"Shanghai"
+
+    "latitude":0.444,
+    "longitude":0.555
+
+    }
+    5. DELETE Device
+    URL: http://{ip:port}/v1.0/device/<device_id>
+
+    Method: DELETE
+    Return Value: HTTP Headers Only
+
+
+    Sensors:
+    1. Create Sensor
+    URL: http://{ip:port}/v1.0/device/<device_id>/sensors
+    Method: POST
+    {
+    "name":"s1",
+    "desc": "temperature sensor",
+    "type":"xxxx",
+    "measure": "temperature",
+    "unit": "C"
+    }
+    Return Value:
+    {
+    "sensor_id": 2
+    }
+    2. Get All the Sensors of a Given Device
+    URL:  http://{ip:port}/v1.0/device/<device_id>/sensor/<sensor_id>
+        Method: GET
+        Return Value:
+        [
+        {"id": "1",
+        "name":"s1",
+        "desc": "temperature sensor",
+        "measure": "temperature",
+        "unit": "C"
+        },
+        {"id": "2",
+        "name":"s2",
+        "desc": "humidity sensor",
+        "measure": "humidity",
+        "unit": "percent"
+        },
+        ]
+
+
+        Data Points:
+        1. Single Data Point Uploading:
+        URL: http://{ip:port}/v1.0/device/<device_id>/sensor/<sensor_id>/datapoints
+
+        {
+        "timestamp":"1419233636000",
+        "value":294.34
+        }
+        Method: POST
+        Return Value: HTTP Headers only
+
+        2. Data Point Batch Uploading:
+        URL: http://{ip:port}/v1.0/device/<device_id>/sensor/<sensor_id>/datapoints
+
+            [
+            {"timestamp": "1419233636000", "value":315.01},
+            {"timestamp": "1419233636001", "value":316.23},
+            {"timestamp": "1419233636003", "value":317.26},
+            {"timestamp": "1419233636004", "value":318},
+            {"timestamp": "1419233636005", "value":317}
+            ]
+
+            Method: POST
+            Return Value: HTTP Headers only
+
+            CURL Test: curl --request POST --data-binary @datafile.txt http://{ip:port}/v1.0/device/12/sensor/3/datapoints
+
+
+
+
+            Image Data:
+            Upload Image:
+            URL: http://{ip:port}/v1.0/device/<device_id>/sensor/<sensor_id>/photos
+                method: POST
+                CURL Test : curl --request POST --data-binary @datafile.jpg http://{ip:port}/v1.0/device/12/sensor/3/photos
+
+                Download Image:
+                URL:http://api.yeelink.net/v1.0/device/<device_id>/sensor/<sensor_id>/photo/content/<key>
+                    method: GET
+
+
+
+                    History Data:
+                    1. Get History Data in a Time Range:
+                    URL: http://{ip:port}/v1.0/device/<device_id>/sensor/<sensor_id>?start=<timestamp>&end=<timestamp>&page=<page>&pagesize=<pagesize>
+                    Return Value:
+                    [
+                    {"timestamp": "1419233636000", "value":315},
+                    {"timestamp": "1419233636001", "value":316},
+                    {"timestamp": "1419233636002", "value":317},
+                    {"timestamp": "1419233636003", "value":317},
+                    {"timestamp": "1419233636004", "value":317}
+                    ]
+
