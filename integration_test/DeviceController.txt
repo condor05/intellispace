@@ -1,0 +1,6 @@
+addDevice:
+    http://127.0.0.1:19080/v1/devices
+    application/json
+    {
+    "name":"t1"
+    }
