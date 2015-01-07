@@ -11,14 +11,15 @@
 
     <mvc:annotation-driven />
 
-    <bean
-        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath:jdbc.properties</value>
-            </list>
-        </property>
-     </bean>
+    <!--<bean-->
+        <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="locations">-->
+            <!--<list>-->
+                <!--<value>classpath:jdbc.properties</value>-->
+            <!--</list>-->
+        <!--</property>-->
+     <!--</bean>-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- mysql database and a datasource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -34,7 +35,7 @@
     </bean>
 
     <!-- enable component scanning (beware that this does not enable mapper scanning!) -->
-    <!--<context:component-scan base-package="com.intellispace.service" />-->
+    <context:component-scan base-package="com.intellispace.service" />
     <context:component-scan base-package="com.intellispace.controller" />
 
     <!-- enable autowire -->
@@ -47,12 +48,12 @@
     <!-- define the SqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="typeAliasesPackage" value="org.intellihome.domain" />
+        <property name="typeAliasesPackage" value="com.intellispace.model" />
     </bean>
 
     <!-- scan for mappers and let them be autowired -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="org.intellihome.persistence" />
+        <property name="basePackage" value="com.intellispace.persistence" />
     </bean>
 
     <!-- freemarker config -->
