@@ -1,6 +1,7 @@
 package com.intellispace.persistence;
 
 import com.intellispace.model.Device;
+import com.intellispace.model.Employee;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,5 +9,5 @@ import com.intellispace.model.Device;
  * Date: 15-1-7
  */
 public interface DeviceMapper {
-    Device addDevice();
+    Integer addDevice(Device device);
 }

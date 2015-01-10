@@ -3,11 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.intellispace.persistence.DeviceMapper">
-
-    <insert id="addDevice" parameterType="Device">
-    INSERT INTO ACCOUNT
-      (EMAIL, FIRSTNAME, LASTNAME, STATUS, ADDR1, ADDR2, CITY, STATE, ZIP, COUNTRY, PHONE, USERID)
+    <insert id="addDevice" parameterType="Device" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO DEVICE
+    (name, description, location, latitude, longtitude, type)
     VALUES
-      (#{email}, #{firstName}, #{lastName}, #{status}, #{address1},  #{address2,jdbcType=VARCHAR}, #{city}, #{state}, #{zip}, #{country}, #{phone}, #{username})
+    (#{name}, #{description}, #{location}, #{latitude}, #{longtitude}, #{type})
     </insert>
 </mapper>

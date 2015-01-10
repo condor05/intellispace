@@ -11,15 +11,15 @@
 
     <mvc:annotation-driven />
 
-    <!--<bean-->
-        <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-        <!--<property name="locations">-->
-            <!--<list>-->
-                <!--<value>classpath:jdbc.properties</value>-->
-            <!--</list>-->
-        <!--</property>-->
-     <!--</bean>-->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <bean
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+     </bean>
+    <!--<context:property-placeholder location="classpath:jdbc.properties"/>-->
 
     <!-- mysql database and a datasource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

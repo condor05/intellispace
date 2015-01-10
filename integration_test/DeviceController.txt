@@ -2,5 +2,10 @@ addDevice:
     http://127.0.0.1:19080/v1/devices
     application/json
     {
-    "name":"t1"
+    "name":"arduino nano",
+    "location":"200 st",
+    "type":"arduino",
+    "description":"arduino to retrieve the temperature",
+    "latitude":"11n",
+    "longtitude":"22s"
     }

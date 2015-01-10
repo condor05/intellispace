@@ -1,6 +1,7 @@
 package com.intellispace.service;
 
 import com.intellispace.model.Device;
+import com.intellispace.model.Employee;
 import com.intellispace.persistence.DeviceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,7 @@ public class DeviceService {
 
     @Transactional
     public Device addDevice(Device device){
-        //TODO replace this with db persistence
-        Device device1 = new Device();
-        device1.setId(11l);
-        return device1;
+        deviceMapper.addDevice(device);
+        return device;
     }
 }
