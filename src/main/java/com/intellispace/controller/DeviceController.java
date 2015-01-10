@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: SHAWN
@@ -29,5 +31,12 @@ public class DeviceController {
         logger.info("Start add devices");
         Device deviceStored = deviceService.addDevice(device);
         return deviceStored;
+    }
+
+    @RequestMapping(value = "/v1/devices", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Device> getDevices(){
+        List<Device> devices = deviceService.getDevices();
+        return devices;
     }
 }

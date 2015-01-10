@@ -4,9 +4,14 @@
 
 <mapper namespace="com.intellispace.persistence.DeviceMapper">
     <insert id="addDevice" parameterType="Device" useGeneratedKeys="true" keyProperty="id">
-    INSERT INTO DEVICE
-    (name, description, location, latitude, longtitude, type)
-    VALUES
-    (#{name}, #{description}, #{location}, #{latitude}, #{longtitude}, #{type})
+        INSERT INTO DEVICE
+          (name, description, location, latitude, longtitude, type)
+        VALUES
+          (#{name}, #{description}, #{location}, #{latitude}, #{longtitude}, #{type})
     </insert>
+
+    <select id="getDevices" resultType="Device">
+        SELECT *
+        FROM device
+    </select>
 </mapper>

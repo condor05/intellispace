@@ -5,7 +5,7 @@ addDevice:
     "name":"arduino nano",
     "location":"200 st",
     "type":"arduino",
-    "description":"arduino to retrieve the temperature",
+    "description":"new arduino",
     "latitude":"11n",
     "longtitude":"22s"
     }

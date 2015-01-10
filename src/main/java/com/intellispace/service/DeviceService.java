@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: SHAWN
@@ -21,5 +23,10 @@ public class DeviceService {
     public Device addDevice(Device device){
         deviceMapper.addDevice(device);
         return device;
+    }
+
+    @Transactional
+    public List<Device> getDevices(){
+        return deviceMapper.getDevices();
     }
 }
