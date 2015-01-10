@@ -14,4 +14,21 @@
         SELECT *
         FROM device
     </select>
+
+    <update id="updateDevice" parameterType="Device">
+        UPDATE DEVICE
+        <set>
+            <if test="name != null">name=#{name},</if>
+            <if test="description != null">description=#{description},</if>
+            <if test="location != null">location=#{location},</if>
+            <if test="latitude != null">latitude=#{latitude},</if>
+            <if test="longtitude != null">longtitude=#{longtitude},</if>
+            <if test="type != null">type=#{type}</if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="deleteDevice" parameterType="java.lang.Long">
+        DELETE FROM DEVICE WHERE id=#{id}
+    </delete>
 </mapper>

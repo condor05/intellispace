@@ -1,6 +1,6 @@
 addDevice:
-    http://127.0.0.1:19080/v1/devices
-    application/json
+    POST http://127.0.0.1:19080/v1/devices
+    Content Type: application/json
     {
     "name":"arduino nano",
     "location":"200 st",
@@ -9,3 +9,17 @@ addDevice:
     "latitude":"11n",
     "longtitude":"22s"
     }
+
+getDevices:
+     GET http://127.0.0.1:19080/v1/devices
+      Content Type: application/json
+
+updateDevice
+     PUT http://127.0.0.1:19080/v1/device/19
+     Content Type: application/json
+     {
+         "name":"update"
+     }
+
+deleteDevice
+    DELETE http://127.0.0.1:19080/v1/device/19

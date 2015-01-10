@@ -29,4 +29,14 @@ public class DeviceService {
     public List<Device> getDevices(){
         return deviceMapper.getDevices();
     }
+
+    @Transactional
+    public int updateDevice(Device device){
+         return deviceMapper.updateDevice(device);
+    }
+
+    @Transactional
+    public int deleteDevice(Long id){
+        return deviceMapper.deleteDevice(id);
+    }
 }

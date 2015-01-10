@@ -5,11 +5,9 @@ import com.intellispace.service.DeviceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,9 +25,12 @@ public class DeviceController {
     private DeviceService deviceService;
 
     @RequestMapping(value = "/v1/devices", method = RequestMethod.POST)
-    public @ResponseBody Device addDevice(@RequestBody Device device) {
+    public @ResponseBody Device addDevice(@RequestBody Device device) throws Exception{
         logger.info("Start add devices");
         Device deviceStored = deviceService.addDevice(device);
+        if (deviceStored.getId() == null){
+            throw new Exception();
+        }
         return deviceStored;
     }
 
@@ -38,5 +39,24 @@ public class DeviceController {
     public List<Device> getDevices(){
         List<Device> devices = deviceService.getDevices();
         return devices;
+    }
+
+    @RequestMapping(value = "/v1/device/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(value = HttpStatus.OK)
+    public @ResponseBody void updateDevice(@PathVariable("id") Long deviceId, @RequestBody Device device) throws Exception{
+        device.setId(deviceId);
+        int resultCode = deviceService.updateDevice(device);
+        if (resultCode == 0){
+            throw new Exception();
+        }
+    }
+
+    @RequestMapping(value = "/v1/device/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.OK)
+    public @ResponseBody void deleteDevice(@PathVariable("id") Long deviceId) throws Exception{
+        int resultCode = deviceService.deleteDevice(deviceId);
+        if (resultCode == 0){
+            throw new Exception();
+        }
     }
 }

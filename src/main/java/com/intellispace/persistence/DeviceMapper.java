@@ -11,6 +11,8 @@ import java.util.List;
  * Date: 15-1-7
  */
 public interface DeviceMapper {
-    Integer addDevice(Device device);
+    int addDevice(Device device);
     List<Device> getDevices();
+    int updateDevice(Device device);
+    int deleteDevice(Long deviceId);
 }
