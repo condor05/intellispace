@@ -31,6 +31,11 @@ public class DeviceService {
     }
 
     @Transactional
+    public Device getDevice(Long id){
+        return deviceMapper.getDevice(id);
+    }
+
+    @Transactional
     public int updateDevice(Device device){
          return deviceMapper.updateDevice(device);
     }

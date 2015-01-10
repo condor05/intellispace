@@ -15,4 +15,5 @@ public interface DeviceMapper {
     List<Device> getDevices();
     int updateDevice(Device device);
     int deleteDevice(Long deviceId);
+    Device getDevice(Long deviceId);
 }

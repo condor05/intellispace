@@ -59,4 +59,14 @@ public class DeviceController {
             throw new Exception();
         }
     }
+
+    @RequestMapping(value = "/v1/device/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Device getDeviceById(@PathVariable("id") Long deviceId) throws Exception{
+        Device device = deviceService.getDevice(deviceId);
+        if (null == device){
+            throw new Exception();
+        }
+        return device;
+    }
 }

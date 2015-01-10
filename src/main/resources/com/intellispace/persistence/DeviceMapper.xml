@@ -15,6 +15,12 @@
         FROM device
     </select>
 
+    <select id="getDevice" resultType="Device" parameterType="int">
+        SELECT *
+        FROM device
+        WHERE id=#{id}
+    </select>
+
     <update id="updateDevice" parameterType="Device">
         UPDATE DEVICE
         <set>

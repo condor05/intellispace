@@ -23,3 +23,7 @@ updateDevice
 
 deleteDevice
     DELETE http://127.0.0.1:19080/v1/device/19
+
+getDeviceById:
+     GET http://127.0.0.1:19080/v1/device/14
+     Content Type: application/json
